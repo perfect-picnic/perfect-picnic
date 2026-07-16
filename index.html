@@ -1021,6 +1021,15 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage("en");
     updatePrice();
+    // Success / cancel popup based on URL
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("success") === "true") {
+    alert("Thank you! Your payment was successful. We’ll confirm your picnic details shortly.");
+  } else if (params.get("cancel") === "true") {
+    alert("Payment was cancelled. If this was a mistake, you can try again or contact us.");
+  }
+})();
   </script>
 </body>
 </html>
