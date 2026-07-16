@@ -1030,21 +1030,29 @@
     alert("Payment was cancelled. If this was a mistake, you can try again or contact us.");
   }
 })();
-  </script>
-  <script type="text/javascript">
-(function () {
+    <script type="text/javascript">
+(function() {
     var options = {
-        whatsapp: "+31612345678", // твой номер WhatsApp
-        call_to_action: "Chat with us", // текст кнопки
-        position: "right", // положение кнопки
+        whatsapp: "+79675391426",   // твой номер
+        call_to_action: "Chat with us",
+        position: "right"
     };
-    var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-    s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-  setTimeout(() => {
-    document.querySelector('.wh-widget-send-button').click();
-}, 2000);
-    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+
+    var proto = document.location.protocol;
+    var host = "getbutton.io";
+    var url = proto + "//static." + host;
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url + '/widget-send-button/js/init.js';
+
+    s.onload = function() {
+        WhWidgetSendButton.init(host, proto, options);
+    };
+
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
 })();
 </script>
 </body>
