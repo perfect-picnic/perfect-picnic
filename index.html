@@ -972,86 +972,40 @@
       event.target.reset();
     }
 
-    // WhatsApp widget
-    const YOUR_PHONE_NUMBER = "79675391426"; // replace with your number (no +)
-    function toggleWaPopup() {
-      const popup = document.getElementById("waPopup");
-      popup.style.display = popup.style.display === "block" ? "none" : "block";
-    }
-    function openWhatsApp() {
-      const url = "https://wa.me/" + YOUR_PHONE_NUMBER + "?text=" + encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
-      window.open(url, "_blank");
-    }
-
-    // Stripe checkout + Netlify Forms + Telegram
-    document.getElementById("picnicForm").addEventListener("submit", async function (event) {
-      event.preventDefault();
-
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      data.extras = formData.getAll("extras");
-
-      // 1) Submit to Netlify Forms (so you get email + have record)
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "booking",
-          ...Object.fromEntries(formData.entries()),
-          extras: data.extras.join(", ")
-        }).toString()
-      });
-
-      // 2) Call Netlify Function to create Stripe checkout + send Telegram
-      const response = await fetch("/.netlify/functions/create-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      const result = await response.json();
-      if (result.url) {
-        window.location.href = result.url;
-      } else {
-        alert("Something went wrong creating the payment. We’ll contact you manually to confirm.");
-      }
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-    setLanguage("en");
-    updatePrice();
-    // Success / cancel popup based on URL
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("success") === "true") {
-    alert("Thank you! Your payment was successful. We’ll confirm your picnic details shortly.");
-  } else if (params.get("cancel") === "true") {
-    alert("Payment was cancelled. If this was a mistake, you can try again or contact us.");
-  }
-})();
-    <script type="text/javascript">
+    // WhatsApp widget<script>
 (function() {
-    var options = {
-        whatsapp: "79675391426",   // твой номер
+    const options = {
+        whatsapp: "+79675391426",   // номер должен быть с +
         call_to_action: "Chat with us",
         position: "right"
     };
 
-    var proto = document.location.protocol;
-    var host = "getbutton.io";
-    var url = proto + "//static." + host;
+    const proto = document.location.protocol;
+    const host = "getbutton.io";
+    const url = proto + "//static." + host;
 
-    var s = document.createElement('script');
+    const s = document.createElement('script');
     s.type = 'text/javascript';
     s.async = true;
     s.src = url + '/widget-send-button/js/init.js';
 
     s.onload = function() {
+        // Инициализация виджета
         WhWidgetSendButton.init(host, proto, options);
+
+        // Гарантированное открытие WhatsApp при клике
+        document.addEventListener("click", function(e) {
+            const btn = e.target.closest(".wh-widget-send-button");
+            if (btn) {
+                window.open("https://wa.me/79675391426?text=" +
+                    encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam."),
+                    "_blank"
+                );
+            }
+        });
     };
 
-    var x = document.getElementsByTagName('script')[0];
+    const x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x);
 })();
 </script>
