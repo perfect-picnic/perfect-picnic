@@ -16,508 +16,167 @@
       --radius: 16px;
       --font: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font);
-    }
-
-    body {
-      background: linear-gradient(to bottom, #fdfcfb, #e2d1f9);
-      color: #222;
-      line-height: 1.6;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #eee;
-    }
-
-    .nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.5rem;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo-circle,
-    .logo-square {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1rem;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font); }
+    body { background: linear-gradient(to bottom, #fdfcfb, #e2d1f9); color: #222; line-height: 1.6; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; }
+    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-circle, .logo-square {
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 1rem;
       background: radial-gradient(circle at 30% 30%, var(--accent), var(--primary));
     }
-
-    .logo-circle {
-      border-radius: 50%;
+    .logo-circle { border-radius: 50%; }
+    .logo-square { border-radius: 12px; }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-text-main { font-weight: 700; color: var(--dark); font-size: 1rem; }
+    .logo-text-sub { font-size: 0.75rem; color: #777; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; }
+    .nav-links a { text-decoration: none; color: var(--dark); padding: 0.25rem 0.6rem; border-radius: 999px; }
+    .nav-links a:hover { background: #f1f1f1; }
+    .lang-switch { display: flex; gap: 0.4rem; align-items: center; font-size: 0.8rem; }
+    .lang-btn {
+      border-radius: 999px; border: 1px solid #ccc; padding: 0.2rem 0.6rem;
+      background: #fff; cursor: pointer; font-size: 0.8rem;
     }
-
-    .logo-square {
-      border-radius: 12px;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-text-main {
-      font-weight: 700;
-      color: var(--dark);
-      font-size: 1rem;
-    }
-
-    .logo-text-sub {
-      font-size: 0.75rem;
-      color: #777;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--dark);
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-    }
-
-    .nav-links a:hover {
-      background: #f1f1f1;
-    }
-
-    .btn-login {
-      border-radius: 999px;
-      border: 1px solid var(--dark);
-      padding: 0.25rem 0.75rem;
-      font-size: 0.85rem;
-      background: #fff;
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--dark);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    section h2 {
-      font-size: 1.6rem;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: center;
-      margin-top: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .hero-tagline {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #fff;
-      padding: 0.5rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid #eee;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-tagline span {
-      font-size: 1.1rem;
-    }
-
-    .hero-text h1 {
-      font-size: 2.6rem;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-text h1 span {
-      color: var(--primary);
-    }
-
-    .hero-text p {
-      font-size: 1rem;
-      max-width: 520px;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .badge {
-      font-size: 0.8rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(38, 70, 83, 0.06);
-      color: var(--dark);
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
+    .lang-btn.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+    main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+    section { margin-bottom: 3rem; }
+    section h2 { font-size: 1.6rem; color: var(--dark); margin-bottom: 0.75rem; }
+    .section-subtitle { font-size: 0.95rem; color: #555; margin-bottom: 1.25rem; }
+    .hero { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 2rem; align-items: center; margin-top: 1.5rem; margin-bottom: 3rem; }
+    .hero-tagline { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; padding: 0.5rem 0.75rem; border-radius: 999px; border: 1px solid #eee; font-size: 0.85rem; margin-bottom: 1rem; }
+    .hero-tagline span { font-size: 1.1rem; }
+    .hero-text h1 { font-size: 2.6rem; color: var(--dark); margin-bottom: 0.75rem; }
+    .hero-text h1 span { color: var(--primary); }
+    .hero-text p { font-size: 1rem; max-width: 520px; margin-bottom: 1.25rem; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .badge { font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: 999px; background: rgba(38,70,83,0.06); color: var(--dark); }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
     .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(231, 111, 81, 0.35);
-      text-decoration: none;
-      display: inline-block;
+      background: var(--primary); color: #fff; border: none; padding: 0.7rem 1.4rem;
+      border-radius: 999px; font-size: 0.95rem; cursor: pointer; box-shadow: 0 8px 20px rgba(231,111,81,0.35);
+      text-decoration: none; display: inline-block;
     }
-
-    .btn-primary:hover {
-      background: #d45b3d;
-    }
-
+    .btn-primary:hover { background: #d45b3d; }
     .btn-secondary {
-      background: transparent;
-      color: var(--dark);
-      border: 1px solid #ccc;
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
+      background: transparent; color: var(--dark); border: 1px solid #ccc;
+      padding: 0.7rem 1.4rem; border-radius: 999px; font-size: 0.9rem; cursor: pointer;
+      text-decoration: none; display: inline-block;
     }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: #555;
-    }
-
+    .hero-note { font-size: 0.8rem; color: #555; }
     .hero-image {
-      position: relative;
-      min-height: 280px;
-      border-radius: 24px;
-      overflow: hidden;
-      background-image: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.35),
-          rgba(0, 0, 0, 0.05)
-        ),
+      position: relative; min-height: 280px; border-radius: 24px; overflow: hidden;
+      background-image: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.05)),
         url("https://images.pexels.com/photos/6153505/pexels-photo-6153505.jpeg");
-      background-size: cover;
-      background-position: center;
+      background-size: cover; background-position: center;
     }
-
     .hero-image-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem;
-      color: #fff;
-      font-size: 0.85rem;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem;
+      color: #fff; font-size: 0.85rem; background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
     }
-
-    .hero-image-overlay strong {
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-
+    .hero-image-overlay strong { display: block; margin-bottom: 0.25rem; }
     .hero-pill {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--dark);
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,0.9); color: var(--dark);
+      padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.8rem;
+      display: flex; align-items: center; gap: 0.4rem;
     }
-
-    .hero-pill-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2ecc71;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.25rem;
-    }
-
+    .hero-pill-dot { width: 8px; height: 8px; border-radius: 50%; background: #2ecc71; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 1.25rem; }
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: var(--radius);
-      padding: 1rem;
-      border: 1px solid #eee;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+      background: rgba(255,255,255,0.95); border-radius: var(--radius);
+      padding: 1rem; border: 1px solid #eee; box-shadow: 0 10px 25px rgba(0,0,0,0.04);
     }
-
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-      color: var(--dark);
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .card-tag {
-      font-size: 0.8rem;
-      color: var(--secondary);
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-    }
-
-    .card-price {
-      font-size: 0.95rem;
-      margin-top: 0.4rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .card-cta {
-      margin-top: 0.75rem;
-    }
-
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--dark); }
+    .card p { font-size: 0.9rem; color: #555; }
+    .card-tag { font-size: 0.8rem; color: var(--secondary); margin-bottom: 0.25rem; font-weight: 600; }
+    .card-price { font-size: 0.95rem; margin-top: 0.4rem; color: var(--primary); font-weight: 600; }
+    .card-cta { margin-top: 0.75rem; }
     .card-cta button {
-      font-size: 0.85rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      border: none;
-      background: var(--secondary);
-      color: #fff;
-      cursor: pointer;
+      font-size: 0.85rem; padding: 0.4rem 0.9rem; border-radius: 999px;
+      border: none; background: var(--secondary); color: #fff; cursor: pointer;
     }
-
-    .card-cta button:hover {
-      background: #21867b;
+    .card-cta button:hover { background: #21867b; }
+    .booking-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 1.5rem; align-items: flex-start; }
+    .form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 150px; }
+    label { display: block; font-size: 0.8rem; margin-bottom: 0.25rem; color: #555; }
+    input, select, textarea {
+      width: 100%; padding: 0.5rem 0.6rem; border-radius: 10px;
+      border: 1px solid #ccc; font-size: 0.85rem;
     }
-
-    .booking-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .form-group {
-      flex: 1;
-      min-width: 150px;
-    }
-
-    label {
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 0.25rem;
-      color: #555;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 0.5rem 0.6rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 0.85rem;
-    }
-
-    textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
-    .extras-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .extras-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-    }
-
-    .price-summary {
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .price-summary strong {
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-
-    .note-small {
-      font-size: 0.75rem;
-      color: #666;
-      margin-top: 0.25rem;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1.5rem;
-    }
-
+    textarea { min-height: 80px; resize: vertical; }
+    .extras-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 0.5rem; margin-bottom: 0.75rem; }
+    .extras-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; }
+    .price-summary { font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .price-summary strong { font-size: 1.1rem; color: var(--primary); }
+    .note-small { font-size: 0.75rem; color: #666; margin-top: 0.25rem; }
+    .faq-grid, .contact-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 1.5rem; }
     details {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: var(--radius);
-      padding: 0.7rem 0.9rem;
-      border: 1px solid #eee;
-      margin-bottom: 0.5rem;
-      font-size: 0.85rem;
+      background: rgba(255,255,255,0.9); border-radius: var(--radius);
+      padding: 0.7rem 0.9rem; border: 1px solid #eee; margin-bottom: 0.5rem; font-size: 0.85rem;
     }
-
-    summary {
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--dark);
+    summary { cursor: pointer; font-weight: 600; color: var(--dark); }
+    .reviews-placeholder { font-size: 0.85rem; color: #555; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; }
+    .gallery-item {
+      border-radius: 16px; overflow: hidden; background: #ddd;
+      min-height: 140px; background-size: cover; background-position: center;
     }
-
-    .reviews-placeholder {
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1.5rem;
-    }
-
-    .contact-info {
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    .contact-info p {
-      margin-bottom: 0.4rem;
-    }
-
+    .contact-info { font-size: 0.85rem; color: #555; }
+    .contact-info p { margin-bottom: 0.4rem; }
     footer {
-      border-top: 1px solid #eee;
-      padding: 1rem 1.5rem;
-      font-size: 0.8rem;
-      color: #777;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.95);
+      border-top: 1px solid #eee; padding: 1rem 1.5rem;
+      font-size: 0.8rem; color: #777; text-align: center;
+      background: rgba(255,255,255,0.95);
     }
-
-    .logo-row {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 0.75rem;
-      flex-wrap: wrap;
-    }
-
+    .logo-row { display: flex; justify-content: center; gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap; }
     .logo-horizontal {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid #eee;
-      font-size: 0.85rem;
-      color: var(--dark);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 0.8rem; border-radius: 999px;
+      background: rgba(255,255,255,0.9); border: 1px solid #eee;
+      font-size: 0.85rem; color: var(--dark);
     }
-
     .logo-monogram {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+      width: 32px; height: 32px; border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, var(--accent), var(--primary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.9rem; font-weight: 800;
     }
-
+    /* WhatsApp widget */
+    .wa-widget {
+      position: fixed; bottom: 16px; right: 16px; z-index: 50;
+    }
+    .wa-bubble {
+      background: #25d366; color: #fff; border-radius: 999px;
+      padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.5rem;
+      cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.2); font-size: 0.85rem;
+    }
+    .wa-bubble-icon {
+      width: 20px; height: 20px; border-radius: 50%; background: #fff;
+      display: flex; align-items: center; justify-content: center; color: #25d366; font-size: 1rem;
+    }
+    .wa-popup {
+      position: fixed; bottom: 70px; right: 16px; width: 260px;
+      background: #fff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      padding: 0.75rem; font-size: 0.85rem; display: none;
+    }
+    .wa-popup-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .wa-popup-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent), var(--primary));
+      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.9rem; font-weight: 800;
+    }
+    .wa-popup-btn {
+      margin-top: 0.5rem; background: #25d366; color: #fff; border: none;
+      border-radius: 999px; padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.8rem;
+    }
     @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .booking-grid,
-      .faq-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-      main {
-        padding: 1rem;
-      }
-      .nav {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-      }
+      .hero { grid-template-columns: 1fr; }
+      .booking-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; }
+      main { padding: 1rem; }
+      .nav { flex-wrap: wrap; gap: 0.75rem; }
     }
   </style>
 </head>
@@ -532,44 +191,66 @@
         </div>
       </div>
       <div class="nav-links">
-        <a href="#packages">Picnic packages</a>
-        <a href="#booking">Book</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a href="https://wa.me/79675391426" class="btn-login">
-          WhatsApp
-        </a>
+        <a href="#packages" data-lang="en">Picnic packages</a>
+        <a href="#booking" data-lang="en">Book</a>
+        <a href="#faq" data-lang="en">FAQ</a>
+        <a href="#contact" data-lang="en">Contact</a>
+
+        <a href="#packages" data-lang="nl" style="display:none;">Pakket</a>
+        <a href="#booking" data-lang="nl" style="display:none;">Boeken</a>
+        <a href="#faq" data-lang="nl" style="display:none;">FAQ</a>
+        <a href="#contact" data-lang="nl" style="display:none;">Contact</a>
+
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang-btn="en">EN</button>
+          <button class="lang-btn" data-lang-btn="nl">NL</button>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-text">
-        <div class="hero-tagline">
-          <span>🥐</span>
-          Cozy picnics in Amsterdam, ready when you arrive.
+        <div class="hero-tagline" data-lang="en">
+          <span>🥐</span> Cozy picnics in Amsterdam, ready when you arrive.
         </div>
-        <h1>
-          Build your <span>perfect picnic</span> in Vondelpark.
-        </h1>
-        <p>
+        <div class="hero-tagline" data-lang="nl" style="display:none;">
+          <span>🥐</span> Gezellige picknicks in Amsterdam, klaar als jij aankomt.
+        </div>
+
+        <h1 data-lang="en">Build your <span>perfect picnic</span> in Vondelpark.</h1>
+        <h1 data-lang="nl" style="display:none;">Stel jouw <span>perfecte picknick</span> samen in het Vondelpark.</h1>
+
+        <p data-lang="en">
           Full‑service picnic experiences for couples, friends, families and visitors. You choose the basket, time and spot—
           we prepare everything and send you the exact location before you arrive.
         </p>
+        <p data-lang="nl" style="display:none;">
+          Volledige picknickervaringen voor stellen, vrienden, families en bezoekers. Jij kiest mand, tijd en plek—wij
+          regelen alles en sturen je de exacte locatie vooraf.
+        </p>
+
         <div class="hero-badges">
-          <span class="badge">Vondelpark • Amsterdam</span>
-          <span class="badge">Romantic & celebration picnics</span>
-          <span class="badge">Curated food & cozy setups</span>
+          <span class="badge" data-lang="en">Vondelpark • Amsterdam</span>
+          <span class="badge" data-lang="en">Romantic & celebration picnics</span>
+          <span class="badge" data-lang="en">Curated food & cozy setups</span>
+
+          <span class="badge" data-lang="nl" style="display:none;">Vondelpark • Amsterdam</span>
+          <span class="badge" data-lang="nl" style="display:none;">Romantische & feestelijke picknicks</span>
+          <span class="badge" data-lang="nl" style="display:none;">Geselecteerde hapjes & gezellige opstelling</span>
         </div>
+
         <div class="hero-cta">
-          <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+          <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" data-lang="en">
             Build your picnic
           </button>
-          <a href="https://wa.me/YOUR_PHONE_NUMBER" class="btn-secondary">
-            Chat on WhatsApp
-          </a>
-          <span class="hero-note">Pay online after we confirm via WhatsApp or phone.</span>
+          <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" data-lang="nl" style="display:none;">
+            Stel je picknick samen
+          </button>
+          <span class="hero-note" data-lang="en">Pay online after we confirm your booking.</span>
+          <span class="hero-note" data-lang="nl" style="display:none;">Betaal online nadat we je reservering bevestigen.</span>
         </div>
       </div>
       <div class="hero-image">
@@ -578,217 +259,305 @@
           Vondelpark bookings open
         </div>
         <div class="hero-image-overlay">
-          <strong>Golden hour in Vondelpark</strong>
-          Cozy blankets, candles and a curated picnic basket—no shopping, no carrying, just a magical Amsterdam moment.
+          <strong data-lang="en">Golden hour in Vondelpark</strong>
+          <strong data-lang="nl" style="display:none;">Golden hour in het Vondelpark</strong>
+          <span data-lang="en">
+            Cozy blankets, candles and a curated picnic basket—no shopping, no carrying, just a magical Amsterdam moment.
+          </span>
+          <span data-lang="nl" style="display:none;">
+            Gezellige dekens, kaarsjes en een samengestelde picknickmand—geen boodschappen, geen gesjouw, alleen een magisch
+            Amsterdam‑moment.
+          </span>
         </div>
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about">
-      <h2>About PerfectPicnic Amsterdam</h2>
-      <p class="section-subtitle">
+      <h2 data-lang="en">About PerfectPicnic Amsterdam</h2>
+      <h2 data-lang="nl" style="display:none;">Over PerfectPicnic Amsterdam</h2>
+      <p class="section-subtitle" data-lang="en">
         Inspired by the charm of Vondelpark and the cozy spirit of Amsterdam, PerfectPicnic creates beautiful outdoor
         experiences for couples, friends, families and visitors.
       </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Geïnspireerd door de charme van het Vondelpark en de gezellige sfeer van Amsterdam, creëert PerfectPicnic mooie
+        buitenmomenten voor stellen, vrienden, families en bezoekers.
+      </p>
       <div class="cards-grid">
         <div class="card">
-          <h3>Full‑service picnics</h3>
-          <p>
+          <h3 data-lang="en">Full‑service picnics</h3>
+          <h3 data-lang="nl" style="display:none;">Volledige service picknicks</h3>
+          <p data-lang="en">
             You design your picnic online—choosing your basket, extras, date and time. When you arrive, everything is already
-            waiting for you: blankets, cushions, tableware, food, drinks and decor.
+            waiting for you.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Je stelt je picknick online samen—mand, extra’s, datum en tijd. Als je aankomt staat alles al klaar.
           </p>
         </div>
         <div class="card">
-          <h3>For locals & tourists</h3>
-          <p>
-            Perfect for romantic dates, birthdays, anniversaries, surprises or simply enjoying the city in a magical way.
-            We communicate in English and Dutch.
+          <h3 data-lang="en">For locals & tourists</h3>
+          <h3 data-lang="nl" style="display:none;">Voor locals & toeristen</h3>
+          <p data-lang="en">
+            Perfect for romantic dates, birthdays, anniversaries and surprises. We communicate in English and Dutch.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Perfect voor romantische dates, verjaardagen, jubilea en verrassingen. We communiceren in het Engels en Nederlands.
           </p>
         </div>
         <div class="card">
-          <h3>Vondelpark first</h3>
-          <p>
-            We start in Vondelpark, Amsterdam’s most iconic park. On request, we can explore other parks and cozy city spots
-            as we grow.
+          <h3 data-lang="en">Vondelpark first</h3>
+          <h3 data-lang="nl" style="display:none;">Eerst het Vondelpark</h3>
+          <p data-lang="en">
+            We start in Vondelpark, Amsterdam’s most iconic park. On request, we can explore other parks and cozy city spots.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            We beginnen in het Vondelpark, het meest iconische park van Amsterdam. Op verzoek verkennen we andere parken en
+            gezellige plekken.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- PACKAGES -->
     <section id="packages">
-      <h2>Picnic packages</h2>
-      <p class="section-subtitle">
+      <h2 data-lang="en">Picnic packages</h2>
+      <h2 data-lang="nl" style="display:none;">Picknickpakketten</h2>
+      <p class="section-subtitle" data-lang="en">
         Inspired by premium picnic experiences in New York, adapted to Amsterdam and Vondelpark—with cozy, romantic setups
         and curated food.
       </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Geïnspireerd door premium picknicks in New York, aangepast aan Amsterdam en het Vondelpark—met gezellige, romantische
+        opstellingen en geselecteerde hapjes.
+      </p>
       <div class="cards-grid">
         <div class="card">
-          <div class="card-tag">For couples</div>
-          <h3>Romantic Picnic for Two</h3>
-          <p>
-            A cozy setup with blankets, cushions, candles, premium snacks, drinks and romantic touches. Ideal for dates,
-            anniversaries and surprises.
+          <div class="card-tag" data-lang="en">For couples</div>
+          <div class="card-tag" data-lang="nl" style="display:none;">Voor stellen</div>
+          <h3 data-lang="en">Romantic Picnic for Two</h3>
+          <h3 data-lang="nl" style="display:none;">Romantische picknick voor twee</h3>
+          <p data-lang="en">
+            Cozy setup with blankets, cushions, candles, premium snacks and drinks. Ideal for dates, anniversaries and
+            surprises.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Gezellige opstelling met dekens, kussens, kaarsjes, premium snacks en drankjes. Ideaal voor dates, jubilea en
+            verrassingen.
           </p>
           <div class="card-price">from €75</div>
           <div class="card-cta">
-            <button type="button" onclick="selectPackage('Romantic Picnic for Two')">Book this picnic</button>
+            <button type="button" onclick="selectPackage('romantic')">Book this picnic</button>
           </div>
         </div>
         <div class="card">
-          <div class="card-tag">For celebrations</div>
-          <h3>Celebration Picnic</h3>
-          <p>
-            A festive setup with decor, celebration touches, premium food selection and optional cake. Perfect for birthdays,
-            engagements or special moments.
+          <div class="card-tag" data-lang="en">For celebrations</div>
+          <div class="card-tag" data-lang="nl" style="display:none;">Voor feestjes</div>
+          <h3 data-lang="en">Celebration Picnic</h3>
+          <h3 data-lang="nl" style="display:none;">Feestelijke picknick</h3>
+          <p data-lang="en">
+            Festive setup with decor, premium food selection and optional cake. Perfect for birthdays, engagements or special
+            moments.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Feestelijke opstelling met decor, geselecteerde hapjes en optionele taart. Perfect voor verjaardagen,
+            verlovingen of speciale momenten.
           </p>
           <div class="card-price">from €95</div>
           <div class="card-cta">
-            <button type="button" onclick="selectPackage('Celebration Picnic')">Book this picnic</button>
+            <button type="button" onclick="selectPackage('celebration')">Book this picnic</button>
           </div>
         </div>
         <div class="card">
-          <div class="card-tag">For friends & visitors</div>
-          <h3>Classic Amsterdam Picnic</h3>
-          <p>
-            A simple, cozy setup with blankets, cushions, tableware and a curated selection of snacks and drinks. Great for
-            friends or tourists exploring the city.
+          <div class="card-tag" data-lang="en">For friends & visitors</div>
+          <div class="card-tag" data-lang="nl" style="display:none;">Voor vrienden & bezoekers</div>
+          <h3 data-lang="en">Classic Amsterdam Picnic</h3>
+          <h3 data-lang="nl" style="display:none;">Klassieke Amsterdam picknick</h3>
+          <p data-lang="en">
+            Simple, cozy setup with blankets, cushions, tableware and a curated selection of snacks and drinks.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Simpele, gezellige opstelling met dekens, kussens, servies en een geselecteerde mix van snacks en drankjes.
           </p>
           <div class="card-price">from €45</div>
           <div class="card-cta">
-            <button type="button" onclick="selectPackage('Classic Amsterdam Picnic')">Book this picnic</button>
+            <button type="button" onclick="selectPackage('classic')">Book this picnic</button>
           </div>
         </div>
         <div class="card">
-          <div class="card-tag">For families</div>
-          <h3>Family Picnic</h3>
-          <p>
+          <div class="card-tag" data-lang="en">For families</div>
+          <div class="card-tag" data-lang="nl" style="display:none;">Voor families</div>
+          <h3 data-lang="en">Family Picnic</h3>
+          <h3 data-lang="nl" style="display:none;">Familie picknick</h3>
+          <p data-lang="en">
             Comfortable blankets, cushions, kid‑friendly snacks, games and a relaxed setup for families enjoying Vondelpark.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Comfortabele dekens, kussens, kindvriendelijke snacks, spelletjes en een ontspannen opstelling voor families in
+            het Vondelpark.
           </p>
           <div class="card-price">from €65</div>
           <div class="card-cta">
-            <button type="button" onclick="selectPackage('Family Picnic')">Book this picnic</button>
+            <button type="button" onclick="selectPackage('family')">Book this picnic</button>
           </div>
         </div>
         <div class="card">
-          <div class="card-tag">Groups & teams</div>
-          <h3>Corporate / Group Picnic</h3>
-          <p>
-            Small team gatherings, group activities or relaxed outdoor meetings in Amsterdam’s most iconic park. Custom
-            pricing based on group size and needs.
+          <div class="card-tag" data-lang="en">Groups & teams</div>
+          <div class="card-tag" data-lang="nl" style="display:none;">Groepen & teams</div>
+          <h3 data-lang="en">Corporate / Group Picnic</h3>
+          <h3 data-lang="nl" style="display:none;">Zakelijke / groepspicknick</h3>
+          <p data-lang="en">
+            Small team gatherings, group activities or relaxed outdoor meetings. Custom pricing based on group size and needs.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Kleine teamuitjes, groepsactiviteiten of ontspannen buitenmeetings. Prijs op maat afhankelijk van groepsgrootte en
+            wensen.
           </p>
           <div class="card-price">custom pricing</div>
           <div class="card-cta">
-            <button type="button" onclick="selectPackage('Corporate / Group Picnic')">Request group picnic</button>
+            <button type="button" onclick="selectPackage('corporate')">Request group picnic</button>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ADD-ONS -->
     <section id="addons">
-      <h2>Add‑ons & extras</h2>
-      <p class="section-subtitle">
-        Personalize your picnic with romantic touches, playful elements or celebration details—just like the premium setups
-        you’ve seen in Central Park, but in Amsterdam.
+      <h2 data-lang="en">Add‑ons & extras</h2>
+      <h2 data-lang="nl" style="display:none;">Extra’s</h2>
+      <p class="section-subtitle" data-lang="en">
+        Personalize your picnic with romantic touches, playful elements or celebration details.
+      </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Maak je picknick persoonlijk met romantische details, spelletjes of feestelijke extra’s.
       </p>
       <div class="cards-grid">
         <div class="card">
-          <h3>Flowers bouquet</h3>
-          <p>Fresh flowers to make your picnic feel extra special.</p>
+          <h3 data-lang="en">Flowers bouquet</h3>
+          <h3 data-lang="nl" style="display:none;">Bloemenboeket</h3>
+          <p data-lang="en">Fresh flowers to make your picnic feel extra special.</p>
+          <p data-lang="nl" style="display:none;">Verse bloemen om je picknick extra bijzonder te maken.</p>
           <div class="card-price">+€15</div>
         </div>
         <div class="card">
-          <h3>Polaroid photo set</h3>
-          <p>Instant photos to capture your moment in a cozy, analog way.</p>
-          <div class="card-price">+€20</div>
-        </div>
-        <div class="card">
-          <h3>Picnic games</h3>
-          <p>Light games for couples, friends or families to enjoy together.</p>
+          <h3 data-lang="en">Picnic games</h3>
+          <h3 data-lang="nl" style="display:none;">Picknickspelletjes</h3>
+          <p data-lang="en">Light games for couples, friends or families.</p>
+          <p data-lang="nl" style="display:none;">Lichte spelletjes voor stellen, vrienden of families.</p>
           <div class="card-price">+€10</div>
         </div>
         <div class="card">
-          <h3>Celebration cake</h3>
-          <p>A small cake for birthdays, engagements or special surprises.</p>
+          <h3 data-lang="en">Celebration cake</h3>
+          <h3 data-lang="nl" style="display:none;">Feesttaart</h3>
+          <p data-lang="en">A small cake for birthdays, engagements or special surprises.</p>
+          <p data-lang="nl" style="display:none;">Een kleine taart voor verjaardagen, verlovingen of speciale verrassingen.</p>
           <div class="card-price">+€25</div>
-        </div>
-        <div class="card">
-          <h3>Surprise setup</h3>
-          <p>Extra decor and details tailored to your idea—proposal, birthday or secret surprise.</p>
-          <div class="card-price">from +€30</div>
         </div>
       </div>
     </section>
 
+    <!-- VONDELPARK -->
     <section id="vondelpark">
-      <h2>Vondelpark – our first home</h2>
-      <p class="section-subtitle">
-        Amsterdam’s most iconic park—peaceful, romantic, full of greenery and perfect picnic spots. We know the cozy corners,
-        quiet lawns and sunset locations.
+      <h2 data-lang="en">Vondelpark – our first home</h2>
+      <h2 data-lang="nl" style="display:none;">Vondelpark – onze eerste thuisbasis</h2>
+      <p class="section-subtitle" data-lang="en">
+        Amsterdam’s most iconic park—peaceful, romantic, full of greenery and perfect picnic spots.
+      </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Het meest iconische park van Amsterdam—rustig, romantisch, groen en vol perfecte picknickplekken.
       </p>
       <div class="cards-grid">
         <div class="card">
-          <h3>Curated locations</h3>
-          <p>
+          <h3 data-lang="en">Curated locations</h3>
+          <h3 data-lang="nl" style="display:none;">Geselecteerde locaties</h3>
+          <p data-lang="en">
             We choose spots that feel private, cozy and beautiful. Before your picnic, we send you a pin with the exact
             location.
           </p>
-        </div>
-        <div class="card">
-          <h3>Local atmosphere</h3>
-          <p>
-            Enjoy the real Amsterdam vibe—bikes passing, people relaxing, and you with a curated picnic setup that feels
-            special.
+          <p data-lang="nl" style="display:none;">
+            We kiezen plekken die privé, gezellig en mooi aanvoelen. Voor je picknick sturen we je een pin met de exacte
+            locatie.
           </p>
         </div>
         <div class="card">
-          <h3>Growing beyond Vondelpark</h3>
-          <p>
+          <h3 data-lang="en">Local atmosphere</h3>
+          <h3 data-lang="nl" style="display:none;">Lokale sfeer</h3>
+          <p data-lang="en">
+            Enjoy the real Amsterdam vibe—bikes passing, people relaxing, and you with a curated picnic setup.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Geniet van de echte Amsterdamse sfeer—fietsen, mensen die relaxen, en jij met een samengestelde picknickopstelling.
+          </p>
+        </div>
+        <div class="card">
+          <h3 data-lang="en">Growing beyond Vondelpark</h3>
+          <h3 data-lang="nl" style="display:none;">Groei buiten het Vondelpark</h3>
+          <p data-lang="en">
             As PerfectPicnic grows, we’ll add more parks and city spots. For now, Vondelpark is our cozy starting point.
+          </p>
+          <p data-lang="nl" style="display:none;">
+            Als PerfectPicnic groeit, voegen we meer parken en stadsplekken toe. Voor nu is het Vondelpark ons gezellige
+            startpunt.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- BOOKING -->
     <section id="booking">
-      <h2>Build your picnic & reserve</h2>
-      <p class="section-subtitle">
-        Fill in your details, choose your package and extras. We’ll contact you via WhatsApp or phone to confirm and send the
-        exact location.
+      <h2 data-lang="en">Build your picnic & reserve</h2>
+      <h2 data-lang="nl" style="display:none;">Stel je picknick samen & reserveer</h2>
+      <p class="section-subtitle" data-lang="en">
+        Fill in your details, choose your package and extras. We’ll guide you to secure payment (iDEAL / card) and confirm
+        your booking.
+      </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Vul je gegevens in, kies je pakket en extra’s. We leiden je naar een veilige betaling (iDEAL / kaart) en bevestigen
+        je reservering.
       </p>
       <div class="booking-grid">
         <div class="card">
-          <h3>Your picnic details</h3>
-          <!-- Netlify Forms: submissions go to Netlify dashboard -->
-          <form name="booking" netlify>
+          <h3 data-lang="en">Your picnic details</h3>
+          <h3 data-lang="nl" style="display:none;">Jouw picknickdetails</h3>
+
+          <!-- Netlify form + Stripe checkout -->
+          <form id="picnicForm" name="booking" netlify>
             <div class="form-row">
               <div class="form-group">
-                <label for="name">Your name</label>
-                <input id="name" name="name" type="text" required placeholder="e.g. Regina" />
+                <label for="name" data-lang="en">Your name</label>
+                <label for="name" data-lang="nl" style="display:none;">Je naam</label>
+                <input id="name" name="name" type="text" required />
               </div>
               <div class="form-group">
-                <label for="contact">WhatsApp / phone</label>
-                <input id="contact" name="contact" type="tel" required placeholder="+31..." />
+                <label for="contact" data-lang="en">WhatsApp / phone</label>
+                <label for="contact" data-lang="nl" style="display:none;">WhatsApp / telefoon</label>
+                <input id="contact" name="contact" type="tel" required />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="email">Email (for confirmation)</label>
-                <input id="email" name="email" type="email" required placeholder="you@example.com" />
+                <label for="email" data-lang="en">Email</label>
+                <label for="email" data-lang="nl" style="display:none;">E‑mail</label>
+                <input id="email" name="email" type="email" required />
               </div>
               <div class="form-group">
-                <label for="people">Number of people</label>
+                <label for="people" data-lang="en">Number of people</label>
+                <label for="people" data-lang="nl" style="display:none;">Aantal personen</label>
                 <input id="people" name="people" type="number" min="2" max="20" value="2" />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="date">Date</label>
+                <label for="date" data-lang="en">Date</label>
+                <label for="date" data-lang="nl" style="display:none;">Datum</label>
                 <input id="date" name="date" type="date" required />
               </div>
               <div class="form-group">
-                <label for="time">Preferred time</label>
+                <label for="time" data-lang="en">Preferred time</label>
+                <label for="time" data-lang="nl" style="display:none;">Gewenste tijd</label>
                 <select id="time" name="time" required>
                   <option value="09:00">09:00</option>
                   <option value="09:30">09:30</option>
@@ -813,14 +582,16 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="location">Location</label>
+                <label for="location" data-lang="en">Location</label>
+                <label for="location" data-lang="nl" style="display:none;">Locatie</label>
                 <select id="location" name="location" required>
                   <option value="Vondelpark">Vondelpark (Amsterdam)</option>
                   <option value="Other-Amsterdam">Other Amsterdam park (request)</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="vibe">Vibe</label>
+                <label for="vibe" data-lang="en">Vibe</label>
+                <label for="vibe" data-lang="nl" style="display:none;">Sfeer</label>
                 <select id="vibe" name="vibe">
                   <option value="romantic">Romantic date</option>
                   <option value="friends">Friends gathering</option>
@@ -833,7 +604,8 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="package">Picnic package</label>
+                <label for="package" data-lang="en">Picnic package</label>
+                <label for="package" data-lang="nl" style="display:none;">Picknickpakket</label>
                 <select id="package" name="package" onchange="updatePrice()" required>
                   <option value="classic">Classic Amsterdam Picnic (from €45)</option>
                   <option value="romantic">Romantic Picnic for Two (from €75)</option>
@@ -843,7 +615,8 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="diet">Diet preferences</label>
+                <label for="diet" data-lang="en">Diet preferences</label>
+                <label for="diet" data-lang="nl" style="display:none;">Dieetwensen</label>
                 <select id="diet" name="diet">
                   <option value="none">No specific preference</option>
                   <option value="vegetarian">Vegetarian</option>
@@ -854,182 +627,245 @@
               </div>
             </div>
 
-            <label>Extras</label>
+            <label data-lang="en">Extras</label>
+            <label data-lang="nl" style="display:none;">Extra’s</label>
             <div class="extras-list">
               <label class="extras-item">
                 <input type="checkbox" name="extras" value="flowers" onchange="updatePrice()" />
-                Flowers bouquet (+€15)
-              </label>
-              <label class="extras-item">
-                <input type="checkbox" name="extras" value="polaroid" onchange="updatePrice()" />
-                Polaroid photos (+€20)
+                <span data-lang="en">Flowers bouquet (+€15)</span>
+                <span data-lang="nl" style="display:none;">Bloemenboeket (+€15)</span>
               </label>
               <label class="extras-item">
                 <input type="checkbox" name="extras" value="games" onchange="updatePrice()" />
-                Picnic games (+€10)
+                <span data-lang="en">Picnic games (+€10)</span>
+                <span data-lang="nl" style="display:none;">Picknickspelletjes (+€10)</span>
               </label>
               <label class="extras-item">
                 <input type="checkbox" name="extras" value="cake" onchange="updatePrice()" />
-                Celebration cake (+€25)
-              </label>
-              <label class="extras-item">
-                <input type="checkbox" name="extras" value="surprise" onchange="updatePrice()" />
-                Surprise setup (+€30)
+                <span data-lang="en">Celebration cake (+€25)</span>
+                <span data-lang="nl" style="display:none;">Feesttaart (+€25)</span>
               </label>
             </div>
 
             <div class="form-group">
-              <label for="notes">Special requests (language, allergies, surprises, etc.)</label>
-              <textarea id="notes" name="notes" placeholder="Tell us about allergies, surprises, or any special idea you have."></textarea>
+              <label for="notes" data-lang="en">Special requests (allergies, surprises, etc.)</label>
+              <label for="notes" data-lang="nl" style="display:none;">Speciale wensen (allergieën, verrassingen, etc.)</label>
+              <textarea id="notes" name="notes"></textarea>
             </div>
 
             <div class="price-summary" id="priceSummary">
               Estimated total: <strong>€45</strong>
-              <div class="note-small">
-                Final price and payment link (iDEAL / card) will be confirmed via WhatsApp or email after we review your request.
+              <div class="note-small" data-lang="en">
+                You’ll be redirected to a secure payment page (Stripe) to pay with iDEAL or card.
+              </div>
+              <div class="note-small" data-lang="nl" style="display:none;">
+                Je wordt doorgestuurd naar een veilige betaalpagina (Stripe) om met iDEAL of kaart te betalen.
               </div>
             </div>
 
-            <button class="btn-primary" type="submit">
+            <button class="btn-primary" type="submit" data-lang="en">
               Request & reserve picnic
             </button>
-            <div class="note-small">
-              After you submit, we’ll contact you personally to confirm details and send the exact location closer to the date.
-            </div>
+            <button class="btn-primary" type="submit" data-lang="nl" style="display:none;">
+              Vraag aan & reserveer picknick
+            </button>
           </form>
         </div>
 
         <div class="card">
-          <h3>What’s included</h3>
-          <p class="note-small">
+          <h3 data-lang="en">What’s included</h3>
+          <h3 data-lang="nl" style="display:none;">Wat is inbegrepen</h3>
+          <p class="note-small" data-lang="en">
             Each picnic includes a cozy setup with blankets, cushions, tableware and a curated selection of food & drinks,
             adapted to your chosen package.
           </p>
-          <ul style="font-size:0.85rem; margin-left:1rem; margin-bottom:0.75rem;">
-            <li>Curated picnic basket based on your choice</li>
-            <li>Blankets, cushions and cozy decor</li>
-            <li>Reusable plates, glasses and cutlery</li>
-            <li>Setup and clean‑up by PerfectPicnic</li>
-          </ul>
-          <p class="note-small">
-            Payment: for now, we send you a secure payment link (e.g. iDEAL / card) after confirming your request.
+          <p class="note-small" data-lang="nl" style="display:none;">
+            Elke picknick bevat een gezellige opstelling met dekens, kussens, servies en een samengestelde selectie hapjes &
+            drankjes, aangepast aan je gekozen pakket.
           </p>
+          <ul style="font-size:0.85rem; margin-left:1rem; margin-bottom:0.75rem;">
+            <li data-lang="en">Curated picnic basket</li>
+            <li data-lang="en">Blankets, cushions and cozy decor</li>
+            <li data-lang="en">Reusable plates, glasses and cutlery</li>
+            <li data-lang="en">Setup and clean‑up by PerfectPicnic</li>
+
+            <li data-lang="nl" style="display:none;">Samengestelde picknickmand</li>
+            <li data-lang="nl" style="display:none;">Dekens, kussens en gezellige decoratie</li>
+            <li data-lang="nl" style="display:none;">Herbruikbare borden, glazen en bestek</li>
+            <li data-lang="nl" style="display:none;">Opbouw en opruimen door PerfectPicnic</li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
-      <h2>FAQ & reviews</h2>
-      <p class="section-subtitle">
-        A few common questions about PerfectPicnic in Amsterdam. You can also leave a review after your picnic.
+      <h2 data-lang="en">FAQ & reviews</h2>
+      <h2 data-lang="nl" style="display:none;">FAQ & reviews</h2>
+      <p class="section-subtitle" data-lang="en">
+        A few common questions about PerfectPicnic in Amsterdam. Reviews will appear here as we grow.
+      </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Een paar veelgestelde vragen over PerfectPicnic in Amsterdam. Reviews verschijnen hier zodra we groeien.
       </p>
       <div class="faq-grid">
         <div>
           <details>
-            <summary>Where do you organise picnics?</summary>
-            <p>
-              We start in Vondelpark, Amsterdam. On request, we can explore other parks or locations in the city. We always
-              send you a pin with the exact spot before your picnic.
+            <summary data-lang="en">Where do you organise picnics?</summary>
+            <summary data-lang="nl" style="display:none;">Waar organiseren jullie picknicks?</summary>
+            <p data-lang="en">
+              We start in Vondelpark, Amsterdam. On request, we can explore other parks or locations in the city.
+            </p>
+            <p data-lang="nl" style="display:none;">
+              We beginnen in het Vondelpark, Amsterdam. Op verzoek verkennen we andere parken of locaties in de stad.
             </p>
           </details>
           <details>
-            <summary>How does payment work?</summary>
-            <p>
-              You first build your picnic and submit the form. We review your request and send you a secure payment link
-              (e.g. iDEAL or card). Once paid, your booking is confirmed.
+            <summary data-lang="en">How does payment work?</summary>
+            <summary data-lang="nl" style="display:none;">Hoe werkt de betaling?</summary>
+            <p data-lang="en">
+              After you submit your booking, we guide you to a secure Stripe checkout page where you can pay with iDEAL or
+              card. Once paid, your booking is confirmed.
+            </p>
+            <p data-lang="nl" style="display:none;">
+              Nadat je je reservering hebt verstuurd, ga je naar een veilige Stripe‑betaalpagina waar je met iDEAL of kaart
+              kunt betalen. Na betaling is je reservering bevestigd.
             </p>
           </details>
           <details>
-            <summary>Can you handle allergies or dietary needs?</summary>
-            <p>
-              Yes. Please mention allergies, dietary preferences or restrictions in the form. We’ll adapt the basket and
-              confirm what’s included before the picnic.
+            <summary data-lang="en">Can you handle allergies or dietary needs?</summary>
+            <summary data-lang="nl" style="display:none;">Kunnen jullie rekening houden met allergieën of dieetwensen?</summary>
+            <p data-lang="en">
+              Yes. Please mention allergies or dietary preferences in the form. We’ll adapt the basket and confirm what’s
+              included.
+            </p>
+            <p data-lang="nl" style="display:none;">
+              Ja. Vermeld allergieën of dieetwensen in het formulier. We passen de mand aan en bevestigen wat er precies in
+              zit.
             </p>
           </details>
           <details>
-            <summary>What if the weather is bad?</summary>
-            <p>
-              Amsterdam weather can be tricky. We’ll discuss options with you (rescheduling, adjusting time or partial
-              refund) depending on the situation and forecast.
+            <summary data-lang="en">What if the weather is bad?</summary>
+            <summary data-lang="nl" style="display:none;">Wat als het weer slecht is?</summary>
+            <p data-lang="en">
+              We’ll discuss options with you (rescheduling, adjusting time or partial refund) depending on the forecast.
             </p>
-          </details>
-          <details>
-            <summary>Is this good for tourists?</summary>
-            <p>
-              Absolutely. PerfectPicnic is ideal for visitors who want a cozy, local experience in Amsterdam without
-              planning or shopping. We can communicate in English and Dutch.
+            <p data-lang="nl" style="display:none;">
+              We bespreken opties met je (verplaatsen, tijd aanpassen of gedeeltelijke terugbetaling) afhankelijk van de
+              weersverwachting.
             </p>
           </details>
         </div>
         <div class="card">
-          <h3>Reviews (coming soon)</h3>
-          <p class="reviews-placeholder">
+          <h3 data-lang="en">Reviews (coming soon)</h3>
+          <h3 data-lang="nl" style="display:none;">Reviews (binnenkort)</h3>
+          <p class="reviews-placeholder" data-lang="en">
             After each picnic, we’ll invite guests to leave a short review here—so future couples and friends can see real
-            experiences in Vondelpark and around Amsterdam.
+            experiences in Vondelpark.
           </p>
-          <p class="note-small" style="margin-top:0.5rem;">
-            If you’ve already had a picnic with us, you can share feedback via WhatsApp or email and we’ll add it.
+          <p class="reviews-placeholder" data-lang="nl" style="display:none;">
+            Na elke picknick vragen we gasten om een korte review achter te laten—zodat toekomstige stellen en vrienden echte
+            ervaringen kunnen zien.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2 data-lang="en">Gallery</h2>
+      <h2 data-lang="nl" style="display:none;">Galerij</h2>
+      <p class="section-subtitle" data-lang="en">
+        A glimpse of the cozy, romantic atmosphere we create in Vondelpark and around Amsterdam.
+      </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Een glimp van de gezellige, romantische sfeer die we creëren in het Vondelpark en rond Amsterdam.
+      </p>
+      <div class="gallery-grid">
+        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/6153505/pexels-photo-6153505.jpeg');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/6153504/pexels-photo-6153504.jpeg');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/6153503/pexels-photo-6153503.jpeg');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/6153499/pexels-photo-6153499.jpeg');"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>About & contact</h2>
-      <p class="section-subtitle">
+      <h2 data-lang="en">About & contact</h2>
+      <h2 data-lang="nl" style="display:none;">Over & contact</h2>
+      <p class="section-subtitle" data-lang="en">
         Want something extra special—proposal, birthday surprise, corporate picnic? Tell us your idea and we’ll co‑create it.
+      </p>
+      <p class="section-subtitle" data-lang="nl" style="display:none;">
+        Wil je iets extra speciaals—aanzoek, verjaardagsverrassing, zakelijke picknick? Vertel je idee en we denken mee.
       </p>
       <div class="contact-grid">
         <div class="card">
-          <h3>Send us a message</h3>
+          <h3 data-lang="en">Send us a message</h3>
+          <h3 data-lang="nl" style="display:none;">Stuur ons een bericht</h3>
           <form id="contactForm" onsubmit="handleContact(event)">
             <div class="form-row">
               <div class="form-group">
-                <label for="cname">Name</label>
+                <label for="cname" data-lang="en">Name</label>
+                <label for="cname" data-lang="nl" style="display:none;">Naam</label>
                 <input id="cname" type="text" required />
               </div>
               <div class="form-group">
-                <label for="cemail">Email</label>
+                <label for="cemail" data-lang="en">Email</label>
+                <label for="cemail" data-lang="nl" style="display:none;">E‑mail</label>
                 <input id="cemail" type="email" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="cphone">WhatsApp / phone</label>
+                <label for="cphone" data-lang="en">WhatsApp / phone</label>
+                <label for="cphone" data-lang="nl" style="display:none;">WhatsApp / telefoon</label>
                 <input id="cphone" type="tel" />
               </div>
               <div class="form-group">
-                <label for="ctype">Type of request</label>
+                <label for="ctype" data-lang="en">Type of request</label>
+                <label for="ctype" data-lang="nl" style="display:none;">Type aanvraag</label>
                 <select id="ctype">
-                  <option>General question</option>
-                  <option>Custom picnic idea</option>
-                  <option>Corporate / group</option>
-                  <option>Collaboration</option>
+                  <option data-lang="en">General question</option>
+                  <option data-lang="en">Custom picnic idea</option>
+                  <option data-lang="en">Corporate / group</option>
+                  <option data-lang="en">Collaboration</option>
+
+                  <option data-lang="nl" style="display:none;">Algemene vraag</option>
+                  <option data-lang="nl" style="display:none;">Maatwerk picknickidee</option>
+                  <option data-lang="nl" style="display:none;">Zakelijk / groep</option>
+                  <option data-lang="nl" style="display:none;">Samenwerking</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <label for="cmessage">Message</label>
-              <textarea id="cmessage" required placeholder="Tell us what you have in mind."></textarea>
+              <label for="cmessage" data-lang="en">Message</label>
+              <label for="cmessage" data-lang="nl" style="display:none;">Bericht</label>
+              <textarea id="cmessage" required></textarea>
             </div>
-            <button class="btn-secondary" type="submit">Send message</button>
-            <div class="note-small">
+            <button class="btn-secondary" type="submit" data-lang="en">Send message</button>
+            <button class="btn-secondary" type="submit" data-lang="nl" style="display:none;">Verstuur bericht</button>
+            <div class="note-small" data-lang="en">
               We’ll reply as soon as possible via email or WhatsApp.
+            </div>
+            <div class="note-small" data-lang="nl" style="display:none;">
+              We reageren zo snel mogelijk via e‑mail of WhatsApp.
             </div>
           </form>
         </div>
         <div class="contact-info">
-          <p><strong>Founder:</strong> Regina, PerfectPicnic Amsterdam</p>
-          <p>
+          <p data-lang="en"><strong>Founder:</strong> Regina, PerfectPicnic Amsterdam</p>
+          <p data-lang="nl" style="display:none;"><strong>Oprichter:</strong> Regina, PerfectPicnic Amsterdam</p>
+          <p data-lang="en">
             Inspired by the cozy charm of Vondelpark and the joy of creating beautiful moments, PerfectPicnic helps people
             enjoy the city in a magical, stress‑free way.
           </p>
-          <p style="margin-top:0.5rem;"><strong>Based in:</strong> Amsterdam, Netherlands</p>
-          <p><strong>Focus:</strong> Vondelpark & cozy city spots</p>
-          <p><strong>Languages:</strong> English & Dutch</p>
-          <p style="margin-top:0.5rem;">
-            After you book, we’ll share a WhatsApp number and direct contact details so you can reach us easily on the day.
+          <p data-lang="nl" style="display:none;">
+            Geïnspireerd door de gezellige charme van het Vondelpark en het plezier van mooie momenten creëren, helpt
+            PerfectPicnic mensen om de stad op een magische, stressvrije manier te beleven.
           </p>
+          <p style="margin-top:0.5rem;" data-lang="en"><strong>Based in:</strong> Amsterdam, Netherlands</p>
+          <p style="margin-top:0.5rem;" data-lang="nl" style="display:none;"><strong>Gebaseerd in:</strong> Amsterdam, Nederland</p>
         </div>
       </div>
     </section>
@@ -1048,71 +884,142 @@
     </div>
   </footer>
 
+  <!-- WhatsApp widget -->
+  <div class="wa-widget">
+    <div class="wa-bubble" onclick="toggleWaPopup()">
+      <div class="wa-bubble-icon">✆</div>
+      <span>Chat on WhatsApp</span>
+    </div>
+    <div class="wa-popup" id="waPopup">
+      <div class="wa-popup-header">
+        <div class="wa-popup-avatar">PP</div>
+        <div>
+          <strong>PerfectPicnic Amsterdam</strong><br />
+          <span style="font-size:0.75rem;">Usually replies within a few hours</span>
+        </div>
+      </div>
+      <p style="font-size:0.8rem;">
+        Click below to open WhatsApp and chat with us about your picnic idea.
+      </p>
+      <button class="wa-popup-btn" onclick="openWhatsApp()">Open WhatsApp</button>
+    </div>
+  </div>
+
   <script>
+    // Language switcher
+    const langButtons = document.querySelectorAll("[data-lang-btn]");
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-lang]").forEach(el => {
+        el.style.display = el.getAttribute("data-lang") === lang ? "" : "none";
+      });
+      langButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
+      });
+    }
+    langButtons.forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-lang-btn")));
+    });
+
+    // Price calculation
     function basePrice(packageType) {
       switch (packageType) {
-        case "classic":
-          return 45;
-        case "romantic":
-          return 75;
-        case "celebration":
-          return 95;
-        case "family":
-          return 65;
-        case "corporate":
-          return 0; // custom
-        default:
-          return 45;
+        case "classic": return 45;
+        case "romantic": return 75;
+        case "celebration": return 95;
+        case "family": return 65;
+        case "corporate": return 0;
+        default: return 45;
       }
     }
-
     function updatePrice() {
       const packageSelect = document.getElementById("package");
       const extras = document.querySelectorAll("input[name='extras']:checked");
       let price = basePrice(packageSelect.value);
 
-      extras.forEach((extra) => {
+      extras.forEach(extra => {
         if (extra.value === "flowers") price += 15;
-        if (extra.value === "polaroid") price += 20;
         if (extra.value === "games") price += 10;
         if (extra.value === "cake") price += 25;
-        if (extra.value === "surprise") price += 30;
       });
 
       const priceSummary = document.getElementById("priceSummary");
       if (packageSelect.value === "corporate") {
         priceSummary.innerHTML =
           'Estimated total: <strong>custom</strong>' +
-          '<div class="note-small">We’ll discuss group size and needs, then send a custom quote and payment link.</div>';
+          '<div class="note-small" data-lang="en">We’ll discuss group size and needs, then send a custom quote and payment link.</div>' +
+          '<div class="note-small" data-lang="nl" style="display:none;">We bespreken groepsgrootte en wensen en sturen daarna een prijs op maat en betaallink.</div>';
       } else {
         priceSummary.innerHTML =
-          'Estimated total: <strong>€' +
-          price +
-          "</strong>" +
-          '<div class="note-small">Final price and payment link (iDEAL / card) will be confirmed via WhatsApp or email after we review your request.</div>';
+          'Estimated total: <strong>€' + price + "</strong>" +
+          '<div class="note-small" data-lang="en">You’ll be redirected to a secure payment page (Stripe) to pay with iDEAL or card.</div>' +
+          '<div class="note-small" data-lang="nl" style="display:none;">Je wordt doorgestuurd naar een veilige betaalpagina (Stripe) om met iDEAL of kaart te betalen.</div>';
       }
+      setLanguage(document.querySelector(".lang-btn.active").getAttribute("data-lang-btn"));
     }
 
-    function handleContact(event) {
-      event.preventDefault();
-      alert(
-        "Thanks for your message!\n\nIn a real version, this would send an email or notification to PerfectPicnic."
-      );
-      event.target.reset();
-    }
-
-    function selectPackage(name) {
+    // Select package from cards
+    function selectPackage(key) {
       const packageSelect = document.getElementById("package");
-      if (name.includes("Romantic")) packageSelect.value = "romantic";
-      else if (name.includes("Celebration")) packageSelect.value = "celebration";
-      else if (name.includes("Classic")) packageSelect.value = "classic";
-      else if (name.includes("Family")) packageSelect.value = "family";
-      else if (name.includes("Corporate")) packageSelect.value = "corporate";
+      packageSelect.value = key;
       document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
       updatePrice();
     }
 
+    // Contact form (placeholder)
+    function handleContact(event) {
+      event.preventDefault();
+      alert("Thanks for your message! In the real setup, this will send an email to PerfectPicnic.");
+      event.target.reset();
+    }
+
+    // WhatsApp widget
+    const YOUR_PHONE_NUMBER = "31612345678"; // replace with your number (no +)
+    function toggleWaPopup() {
+      const popup = document.getElementById("waPopup");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+    function openWhatsApp() {
+      const url = "https://wa.me/" + YOUR_PHONE_NUMBER + "?text=" + encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
+      window.open(url, "_blank");
+    }
+
+    // Stripe checkout + Netlify Forms + Telegram
+    document.getElementById("picnicForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.extras = formData.getAll("extras");
+
+      // 1) Submit to Netlify Forms (so you get email + have record)
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "booking",
+          ...Object.fromEntries(formData.entries()),
+          extras: data.extras.join(", ")
+        }).toString()
+      });
+
+      // 2) Call Netlify Function to create Stripe checkout + send Telegram
+      const response = await fetch("/.netlify/functions/create-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      if (result.url) {
+        window.location.href = result.url;
+      } else {
+        alert("Something went wrong creating the payment. We’ll contact you manually to confirm.");
+      }
+    });
+
     document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("en");
     updatePrice();
   </script>
 </body>
