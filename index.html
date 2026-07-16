@@ -884,50 +884,64 @@
     </div>
   </footer>
 
-    <!-- WhatsApp widget -->
-  <div class="wa-widget">
-    <div class="wa-bubble" onclick="toggleWaPopup()">
-      <div class="wa-bubble-icon">✆</div>
-      <span>Chat on WhatsApp</span>
-    </div>
-
-    <div class="wa-popup" id="waPopup" style="display:none;">
-      <div class="wa-popup-header">
-        <div class="wa-popup-avatar">PP</div>
-        <div>
-          <strong>PerfectPicnic Amsterdam</strong><br />
-          <span style="font-size:0.75rem;">Usually replies within a few hours</span>
-        </div>
-      </div>
-
-      <p style="font-size:0.8rem;">
-        Click below to open WhatsApp and chat with us about your picnic idea.
-      </p>
-
-      <button class="wa-popup-btn" onclick="openWhatsApp()">Open WhatsApp</button>
-    </div>
+   <!-- WhatsApp widget -->
+<div class="wa-widget">
+  <div class="wa-bubble">
+    <div class="wa-bubble-icon">✆</div>
+    <span>Chat on WhatsApp</span>
   </div>
 
-  <script>
-    // WhatsApp widget logic (fixed)
-    const PHONE = "79675391426"; // only digits, no +
+  <div class="wa-popup" id="waPopup" style="display:none;">
+    <div class="wa-popup-header">
+      <div class="wa-popup-avatar">PP</div>
+      <div>
+        <strong>PerfectPicnic Amsterdam</strong><br />
+        <span style="font-size:0.75rem;">Usually replies within a few hours</span>
+      </div>
+    </div>
 
-    function toggleWaPopup() {
-      const popup = document.getElementById("waPopup");
-      if (!popup) return;
+    <p style="font-size:0.8rem;">
+      Click below to open WhatsApp and chat with us about your picnic idea.
+    </p>
 
-      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    <button class="wa-popup-btn">Open WhatsApp</button>
+  </div>
+</div>
+
+<script>
+  // WhatsApp widget logic (fixed)
+  const PHONE = "79675391426"; // only digits, no +
+
+  function toggleWaPopup() {
+    const popup = document.getElementById("waPopup");
+    if (!popup) return;
+    popup.style.display = popup.style.display === "block" ? "none" : "block";
+  }
+
+  function openWhatsApp() {
+    const url =
+      "https://wa.me/" +
+      PHONE +
+      "?text=" +
+      encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
+    window.open(url, "_blank");
+  }
+
+  // привязка кликов к элементам
+  document.addEventListener("DOMContentLoaded", () => {
+    const bubble = document.querySelector(".wa-bubble");
+    const btn = document.querySelector(".wa-popup-btn");
+
+    if (bubble) {
+      bubble.style.cursor = "pointer";
+      bubble.addEventListener("click", toggleWaPopup);
     }
 
-    function openWhatsApp() {
-      const url =
-        "https://wa.me/" +
-        PHONE +
-        "?text=" +
-        encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
-
-      window.open(url, "_blank");
+    if (btn) {
+      btn.style.cursor = "pointer";
+      btn.addEventListener("click", openWhatsApp);
     }
-  </script>
+  });
+</script>
 </body>
 </html>
