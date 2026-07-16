@@ -884,13 +884,14 @@
     </div>
   </footer>
 
-  <!-- WhatsApp widget -->
+    <!-- WhatsApp widget -->
   <div class="wa-widget">
     <div class="wa-bubble" onclick="toggleWaPopup()">
       <div class="wa-bubble-icon">✆</div>
       <span>Chat on WhatsApp</span>
     </div>
-    <div class="wa-popup" id="waPopup">
+
+    <div class="wa-popup" id="waPopup" style="display:none;">
       <div class="wa-popup-header">
         <div class="wa-popup-avatar">PP</div>
         <div>
@@ -898,118 +899,35 @@
           <span style="font-size:0.75rem;">Usually replies within a few hours</span>
         </div>
       </div>
+
       <p style="font-size:0.8rem;">
         Click below to open WhatsApp and chat with us about your picnic idea.
       </p>
+
       <button class="wa-popup-btn" onclick="openWhatsApp()">Open WhatsApp</button>
     </div>
   </div>
 
   <script>
-    // Language switcher
-    const langButtons = document.querySelectorAll("[data-lang-btn]");
-    function setLanguage(lang) {
-      document.querySelectorAll("[data-lang]").forEach(el => {
-        el.style.display = el.getAttribute("data-lang") === lang ? "" : "none";
-      });
-      langButtons.forEach(btn => {
-        btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
-      });
-    }
-    langButtons.forEach(btn => {
-      btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-lang-btn")));
-    });
+    // WhatsApp widget logic (fixed)
+    const PHONE = "79675391426"; // only digits, no +
 
-    // Price calculation
-    function basePrice(packageType) {
-      switch (packageType) {
-        case "classic": return 45;
-        case "romantic": return 75;
-        case "celebration": return 95;
-        case "family": return 65;
-        case "corporate": return 0;
-        default: return 45;
-      }
-    }
-    function updatePrice() {
-      const packageSelect = document.getElementById("package");
-      const extras = document.querySelectorAll("input[name='extras']:checked");
-      let price = basePrice(packageSelect.value);
+    function toggleWaPopup() {
+      const popup = document.getElementById("waPopup");
+      if (!popup) return;
 
-      extras.forEach(extra => {
-        if (extra.value === "flowers") price += 15;
-        if (extra.value === "games") price += 10;
-        if (extra.value === "cake") price += 25;
-      });
-
-      const priceSummary = document.getElementById("priceSummary");
-      if (packageSelect.value === "corporate") {
-        priceSummary.innerHTML =
-          'Estimated total: <strong>custom</strong>' +
-          '<div class="note-small" data-lang="en">We’ll discuss group size and needs, then send a custom quote and payment link.</div>' +
-          '<div class="note-small" data-lang="nl" style="display:none;">We bespreken groepsgrootte en wensen en sturen daarna een prijs op maat en betaallink.</div>';
-      } else {
-        priceSummary.innerHTML =
-          'Estimated total: <strong>€' + price + "</strong>" +
-          '<div class="note-small" data-lang="en">You’ll be redirected to a secure payment page (Stripe) to pay with iDEAL or card.</div>' +
-          '<div class="note-small" data-lang="nl" style="display:none;">Je wordt doorgestuurd naar een veilige betaalpagina (Stripe) om met iDEAL of kaart te betalen.</div>';
-      }
-      setLanguage(document.querySelector(".lang-btn.active").getAttribute("data-lang-btn"));
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
     }
 
-    // Select package from cards
-    function selectPackage(key) {
-      const packageSelect = document.getElementById("package");
-      packageSelect.value = key;
-      document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
-      updatePrice();
+    function openWhatsApp() {
+      const url =
+        "https://wa.me/" +
+        PHONE +
+        "?text=" +
+        encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
+
+      window.open(url, "_blank");
     }
-
-    // Contact form (placeholder)
-    function handleContact(event) {
-      event.preventDefault();
-      alert("Thanks for your message! In the real setup, this will send an email to PerfectPicnic.");
-      event.target.reset();
-    }
-
-    // WhatsApp widget<script>
-<script>
-(function() {
-    const PHONE = "79675391426"; // только цифры, без +
-
-    const options = {
-        whatsapp: PHONE,
-        call_to_action: "Chat with us",
-        position: "right"
-    };
-
-    const proto = document.location.protocol;
-    const host = "getbutton.io";
-    const url = proto + "//static." + host;
-
-    const s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = url + "/widget-send-button/js/init.js";
-
-    s.onload = function() {
-        WhWidgetSendButton.init(host, proto, options);
-
-        // fallback: гарантированное открытие WhatsApp при клике
-        document.addEventListener("click", function(e) {
-            if (e.target.closest(".wh-widget-send-button")) {
-                window.open(
-                    "https://wa.me/" + PHONE + "?text=" +
-                    encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam."),
-                    "_blank"
-                );
-            }
-        });
-    };
-
-    const firstScript = document.getElementsByTagName("script")[0];
-    firstScript.parentNode.insertBefore(s, firstScript);
-})();
-</script>
+  </script>
 </body>
 </html>
