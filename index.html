@@ -973,9 +973,10 @@
     }
 
     // WhatsApp widget<script>
+<script>
 (function() {
     const options = {
-        whatsapp: "+79675391426",   // номер должен быть с +
+        whatsapp: "+79675391426",   // номер с +
         call_to_action: "Chat with us",
         position: "right"
     };
@@ -990,23 +991,11 @@
     s.src = url + '/widget-send-button/js/init.js';
 
     s.onload = function() {
-        // Инициализация виджета
         WhWidgetSendButton.init(host, proto, options);
-
-        // Гарантированное открытие WhatsApp при клике
-        document.addEventListener("click", function(e) {
-            const btn = e.target.closest(".wh-widget-send-button");
-            if (btn) {
-                window.open("https://wa.me/79675391426?text=" +
-                    encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam."),
-                    "_blank"
-                );
-            }
-        });
     };
 
-    const x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
+    const firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(s, firstScript);
 })();
 </script>
 </body>
