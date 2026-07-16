@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PerfectPicnic Amsterdam – Cozy Picnics in Vondelpark</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cozy, romantic picnics in Amsterdam’s Vondelpark. Full-service setups, ready when you arrive." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #e76f51;
+      --secondary: #2a9d8f;
+      --dark: #264653;
+      --light: #fefae0;
+      --accent: #f4a261;
+      --radius: 16px;
+      --font: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font);
+    }
+
+    body {
+      background: linear-gradient(to bottom, #fdfcfb, #e2d1f9);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-circle,
+    .logo-square {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      background: radial-gradient(circle at 30% 30%, var(--accent), var(--primary));
+    }
+
+    .logo-circle {
+      border-radius: 50%;
+    }
+
+    .logo-square {
+      border-radius: 12px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      background: #f1f1f1;
+    }
+
+    .btn-login {
+      border-radius: 999px;
+      border: 1px solid var(--dark);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.85rem;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1.25rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #eee;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline span {
+      font-size: 1.1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 2.6rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      max-width: 520px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(38, 70, 83, 0.06);
+      color: var(--dark);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(231, 111, 81, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #d45b3d;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--dark);
+      border: 1px solid #ccc;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 280px;
+      border-radius: 24px;
+      overflow: hidden;
+      background-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.05)
+        ),
+        url("https://images.pexels.com/photos/6153505/pexels-photo-6153505.jpeg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      color: #fff;
+      font-size: 0.85rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+    }
+
+    .hero-image-overlay strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-pill {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--dark);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ecc71;
+    }
+
+    /* CARDS & GRIDS */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius);
+      padding: 1rem;
+      border: 1px solid #eee;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .card-tag {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .card-price {
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .card-cta {
+      margin-top: 0.75rem;
+    }
+
+    .card-cta button {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--secondary);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .card-cta button:hover {
+      background: #21867b;
+    }
+
+    /* BOOKING */
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.25rem;
+      color: #555;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.5rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 0.85rem;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .extras-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .extras-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .price-summary {
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .price-summary strong {
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .note-small {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+
+    /* FAQ & REVIEWS */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    details {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #eee;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .reviews-placeholder {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .contact-info {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #eee;
+      padding: 1rem 1.5rem;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .logo-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-horizontal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #eee;
+      font-size: 0.85rem;
+      color: var(--dark);
+    }
+
+    .logo-monogram {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .booking-grid,
+      .faq-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 1rem;
+      }
+      .nav {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo-wrap">
+        <div class="logo-circle">PP</div>
+        <div class="logo-text">
+          <span class="logo-text-main">PerfectPicnic</span>
+          <span class="logo-text-sub">Amsterdam • Vondelpark</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#packages">Picnic packages</a>
+        <a href="#booking">Book</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <button class="btn-login" type="button" onclick="alert('Login coming soon – for now, bookings are handled manually.')">
+          Login
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <div class="hero-tagline">
+          <span>🥐</span>
+          Cozy picnics in Amsterdam, ready when you arrive.
+        </div>
+        <h1>
+          Build your <span>perfect picnic</span> in Vondelpark.
+        </h1>
+        <p>
+          Full‑service picnic experiences for couples, friends, families and visitors. You choose the basket, time and spot—
+          we prepare everything and send you the exact location before you arrive.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">Vondelpark • Amsterdam</span>
+          <span class="badge">Romantic & celebration picnics</span>
+          <span class="badge">Curated food & cozy setups</span>
+        </div>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+            Build your picnic
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">
+            Explore packages
+          </button>
+          <span class="hero-note">Pay online after we confirm via WhatsApp or phone.</span>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-pill">
+          <div class="hero-pill-dot"></div>
+          Vondelpark bookings open
+        </div>
+        <div class="hero-image-overlay">
+          <strong>Golden hour in Vondelpark</strong>
+          Cozy blankets, candles and a curated picnic basket—no shopping, no carrying, just a magical Amsterdam moment.
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About PerfectPicnic Amsterdam</h2>
+      <p class="section-subtitle">
+        Inspired by the charm of Vondelpark and the cozy spirit of Amsterdam, PerfectPicnic creates beautiful outdoor
+        experiences for couples, friends, families and visitors.
+      </p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Full‑service picnics</h3>
+          <p>
+            You design your picnic online—choosing your basket, extras, date and time. When you arrive, everything is already
+            waiting for you: blankets, cushions, tableware, food, drinks and decor.
+          </p>
+        </div>
+        <div class="card">
+          <h3>For locals & tourists</h3>
+          <p>
+            Perfect for romantic dates, birthdays, anniversaries, surprises or simply enjoying the city in a magical way.
+            We communicate in English and Dutch.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Vondelpark first</h3>
+          <p>
+            We start in Vondelpark, Amsterdam’s most iconic park. On request, we can explore other parks and cozy city spots
+            as we grow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section id="packages">
+      <h2>Picnic packages</h2>
+      <p class="section-subtitle">
+        Inspired by premium picnic experiences in New York, adapted to Amsterdam and Vondelpark—with cozy, romantic setups
+        and curated food.
+      </p>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-tag">For couples</div>
+          <h3>Romantic Picnic for Two</h3>
+          <p>
+            A cozy setup with blankets, cushions, candles, premium snacks, drinks and romantic touches. Ideal for dates,
+            anniversaries and surprises.
+          </p>
+          <div class="card-price">from €75</div>
+          <div class="card-cta">
+            <button type="button" onclick="selectPackage('Romantic Picnic for Two')">Book this picnic</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-tag">For celebrations</div>
+          <h3>Celebration Picnic</h3>
+          <p>
+            A festive setup with decor, celebration touches, premium food selection and optional cake. Perfect for birthdays,
+            engagements or special moments.
+          </p>
+          <div class="card-price">from €95</div>
+          <div class="card-cta">
+            <button type="button" onclick="selectPackage('Celebration Picnic')">Book this picnic</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-tag">For friends & visitors</div>
+          <h3>Classic Amsterdam Picnic</h3>
+          <p>
+            A simple, cozy setup with blankets, cushions, tableware and a curated selection of snacks and drinks. Great for
+            friends or tourists exploring the city.
+          </p>
+          <div class="card-price">from €45</div>
+          <div class="card-cta">
+            <button type="button" onclick="selectPackage('Classic Amsterdam Picnic')">Book this picnic</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-tag">For families</div>
+          <h3>Family Picnic</h3>
+          <p>
+            Comfortable blankets, cushions, kid‑friendly snacks, games and a relaxed setup for families enjoying Vondelpark.
+          </p>
+          <div class="card-price">from €65</div>
+          <div class="card-cta">
+            <button type="button" onclick="selectPackage('Family Picnic')">Book this picnic</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-tag">Groups & teams</div>
+          <h3>Corporate / Group Picnic</h3>
+          <p>
+            Small team gatherings, group activities or relaxed outdoor meetings in Amsterdam’s most iconic park. Custom
+            pricing based on group size and needs.
+          </p>
+          <div class="card-price">custom pricing</div>
+          <div class="card-cta">
+            <button type="button" onclick="selectPackage('Corporate / Group Picnic')">Request group picnic</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADD-ONS -->
+    <section id="addons">
+      <h2>Add‑ons & extras</h2>
+      <p class="section-subtitle">
+        Personalize your picnic with romantic touches, playful elements or celebration details—just like the premium setups
+        you’ve seen in Central Park, but in Amsterdam.
+      </p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Flowers bouquet</h3>
+          <p>Fresh flowers to make your picnic feel extra special.</p>
+          <div class="card-price">+€15</div>
+        </div>
+        <div class="card">
+          <h3>Polaroid photo set</h3>
+          <p>Instant photos to capture your moment in a cozy, analog way.</p>
+          <div class="card-price">+€20</div>
+        </div>
+        <div class="card">
+          <h3>Picnic games</h3>
+          <p>Light games for couples, friends or families to enjoy together.</p>
+          <div class="card-price">+€10</div>
+        </div>
+        <div class="card">
+          <h3>Celebration cake</h3>
+          <p>A small cake for birthdays, engagements or special surprises.</p>
+          <div class="card-price">+€25</div>
+        </div>
+        <div class="card">
+          <h3>Surprise setup</h3>
+          <p>Extra decor and details tailored to your idea—proposal, birthday or secret surprise.</p>
+          <div class="card-price">from +€30</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VONDELPARK -->
+    <section id="vondelpark">
+      <h2>Vondelpark – our first home</h2>
+      <p class="section-subtitle">
+        Amsterdam’s most iconic park—peaceful, romantic, full of greenery and perfect picnic spots. We know the cozy corners,
+        quiet lawns and sunset locations.
+      </p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Curated locations</h3>
+          <p>
+            We choose spots that feel private, cozy and beautiful. Before your picnic, we send you a pin with the exact
+            location.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Local atmosphere</h3>
+          <p>
+            Enjoy the real Amsterdam vibe—bikes passing, people relaxing, and you with a curated picnic setup that feels
+            special.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Growing beyond Vondelpark</h3>
+          <p>
+            As PerfectPicnic grows, we’ll add more parks and city spots. For now, Vondelpark is our cozy starting point.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking">
+      <h2>Build your picnic & reserve</h2>
+      <p class="section-subtitle">
+        Fill in your details, choose your package and extras. We’ll contact you via WhatsApp or phone to confirm and send the
+        exact location.
+      </p>
+      <div class="booking-grid">
+        <div class="card">
+          <h3>Your picnic details</h3>
+          <form id="picnicForm" onsubmit="handleBooking(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" required placeholder="e.g. Regina" />
+              </div>
+              <div class="form-group">
+                <label for="contact">WhatsApp / phone</label>
+                <input id="contact" name="contact" type="tel" required placeholder="+31..." />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email (for confirmation)</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="people">Number of people</label>
+                <input id="people" name="people" type="number" min="2" max="20" value="2" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" name="date" type="date" required />
+              </div>
+              <div class="form-group">
+                <label for="time">Preferred time</label>
+                <input id="time" name="time" type="time" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                  <option value="Vondelpark">Vondelpark (Amsterdam)</option>
+                  <option value="Other-Amsterdam">Other Amsterdam park (request)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="vibe">Vibe</label>
+                <select id="vibe" name="vibe">
+                  <option value="romantic">Romantic date</option>
+                  <option value="friends">Friends gathering</option>
+                  <option value="family">Family picnic</option>
+                  <option value="birthday">Birthday / celebration</option>
+                  <option value="corporate">Corporate / team</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="package">Picnic package</label>
+                <select id="package" name="package" onchange="updatePrice()" required>
+                  <option value="classic">Classic Amsterdam Picnic (from €45)</option>
+                  <option value="romantic">Romantic Picnic for Two (from €75)</option>
+                  <option value="celebration">Celebration Picnic (from €95)</option>
+                  <option value="family">Family Picnic (from €65)</option>
+                  <option value="corporate">Corporate / Group Picnic (custom)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="diet">Diet preferences</label>
+                <select id="diet" name="diet">
+                  <option value="none">No specific preference</option>
+                  <option value="vegetarian">Vegetarian</option>
+                  <option value="vegan">Vegan</option>
+                  <option value="halal">Halal-friendly</option>
+                  <option value="gluten-free">Gluten-free options</option>
+                </select>
+              </div>
+            </div>
+
+            <label>Extras</label>
+            <div class="extras-list">
+              <label class="extras-item">
+                <input type="checkbox" name="extras" value="flowers" onchange="updatePrice()" />
+                Flowers bouquet (+€15)
+              </label>
+              <label class="extras-item">
+                <input type="checkbox" name="extras" value="polaroid" onchange="updatePrice()" />
+                Polaroid photos (+€20)
+              </label>
+              <label class="extras-item">
+                <input type="checkbox" name="extras" value="games" onchange="updatePrice()" />
+                Picnic games (+€10)
+              </label>
+              <label class="extras-item">
+                <input type="checkbox" name="extras" value="cake" onchange="updatePrice()" />
+                Celebration cake (+€25)
+              </label>
+              <label class="extras-item">
+                <input type="checkbox" name="extras" value="surprise" onchange="updatePrice()" />
+                Surprise setup (+€30)
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Special requests (language, allergies, surprises, etc.)</label>
+              <textarea id="notes" name="notes" placeholder="Tell us about allergies, surprises, or any special idea you have."></textarea>
+            </div>
+
+            <div class="price-summary" id="priceSummary">
+              Estimated total: <strong>€45</strong>
+              <div class="note-small">
+                Final price and payment link will be confirmed via WhatsApp or email after we review your request.
+              </div>
+            </div>
+
+            <button class="btn-primary" type="submit">
+              Request & reserve picnic
+            </button>
+            <div class="note-small">
+              After you submit, we’ll contact you personally to confirm details and send the exact location closer to the date.
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>What’s included</h3>
+          <p class="note-small">
+            Each picnic includes a cozy setup with blankets, cushions, tableware and a curated selection of food & drinks,
+            adapted to your chosen package.
+          </p>
+          <ul style="font-size:0.85rem; margin-left:1rem; margin-bottom:0.75rem;">
+            <li>Curated picnic basket based on your choice</li>
+            <li>Blankets, cushions and cozy decor</li>
+            <li>Reusable plates, glasses and cutlery</li>
+            <li>Setup and clean‑up by PerfectPicnic</li>
+          </ul>
+          <p class="note-small">
+            Payment: for now, we send you a secure payment link (e.g. iDEAL / card) after confirming your request.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ & REVIEWS -->
+    <section id="faq">
+      <h2>FAQ & reviews</h2>
+      <p class="section-subtitle">
+        A few common questions about PerfectPicnic in Amsterdam. You can also leave a review after your picnic.
+      </p>
+      <div class="faq-grid">
+        <div>
+          <details>
+            <summary>Where do you organise picnics?</summary>
+            <p>
+              We start in Vondelpark, Amsterdam. On request, we can explore other parks or locations in the city. We always
+              send you a pin with the exact spot before your picnic.
+            </p>
+          </details>
+          <details>
+            <summary>How does payment work?</summary>
+            <p>
+              You first build your picnic and submit the form. We review your request and send you a secure payment link
+              (e.g. iDEAL or card). Once paid, your booking is confirmed.
+            </p>
+          </details>
+          <details>
+            <summary>Can you handle allergies or dietary needs?</summary>
+            <p>
+              Yes. Please mention allergies, dietary preferences or restrictions in the form. We’ll adapt the basket and
+              confirm what’s included before the picnic.
+            </p>
+          </details>
+          <details>
+            <summary>What if the weather is bad?</summary>
+            <p>
+              Amsterdam weather can be tricky. We’ll discuss options with you (rescheduling, adjusting time or partial
+              refund) depending on the situation and forecast.
+            </p>
+          </details>
+          <details>
+            <summary>Is this good for tourists?</summary>
+            <p>
+              Absolutely. PerfectPicnic is ideal for visitors who want a cozy, local experience in Amsterdam without
+              planning or shopping. We can communicate in English and Dutch.
+            </p>
+          </details>
+        </div>
+        <div class="card">
+          <h3>Reviews (coming soon)</h3>
+          <p class="reviews-placeholder">
+            After each picnic, we’ll invite guests to leave a short review here—so future couples and friends can see real
+            experiences in Vondelpark and around Amsterdam.
+          </p>
+          <p class="note-small" style="margin-top:0.5rem;">
+            If you’ve already had a picnic with us, you can share feedback via WhatsApp or email and we’ll add it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT FOUNDER & CONTACT -->
+    <section id="contact">
+      <h2>About & contact</h2>
+      <p class="section-subtitle">
+        Want something extra special—proposal, birthday surprise, corporate picnic? Tell us your idea and we’ll co‑create it.
+      </p>
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Send us a message</h3>
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cname">Name</label>
+                <input id="cname" type="text" required />
+              </div>
+              <div class="form-group">
+                <label for="cemail">Email</label>
+                <input id="cemail" type="email" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cphone">WhatsApp / phone</label>
+                <input id="cphone" type="tel" />
+              </div>
+              <div class="form-group">
+                <label for="ctype">Type of request</label>
+                <select id="ctype">
+                  <option>General question</option>
+                  <option>Custom picnic idea</option>
+                  <option>Corporate / group</option>
+                  <option>Collaboration</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cmessage">Message</label>
+              <textarea id="cmessage" required placeholder="Tell us what you have in mind."></textarea>
+            </div>
+            <button class="btn-secondary" type="submit">Send message</button>
+            <div class="note-small">
+              We’ll reply as soon as possible via email or WhatsApp.
+            </div>
+          </form>
+        </div>
+        <div class="contact-info">
+          <p><strong>Founder:</strong> Regina, PerfectPicnic Amsterdam</p>
+          <p>
+            Inspired by the cozy charm of Vondelpark and the joy of creating beautiful moments, PerfectPicnic helps people
+            enjoy the city in a magical, stress‑free way.
+          </p>
+          <p style="margin-top:0.5rem;"><strong>Based in:</strong> Amsterdam, Netherlands</p>
+          <p><strong>Focus:</strong> Vondelpark & cozy city spots</p>
+          <p><strong>Languages:</strong> English & Dutch</p>
+          <p style="margin-top:0.5rem;">
+            After you book, we’ll share a WhatsApp number and direct contact details so you can reach us easily on the day.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> PerfectPicnic Amsterdam – Cozy picnics in Vondelpark. All rights reserved.
+    <div class="logo-row">
+      <div class="logo-circle">PP</div>
+      <div class="logo-square">PP</div>
+      <div class="logo-horizontal">
+        <div class="logo-monogram">PP</div>
+        <span>PerfectPicnic Amsterdam</span>
+      </div>
+      <div class="logo-monogram">PP</div>
+    </div>
+  </footer>
+
+  <script>
+    function basePrice(packageType) {
+      switch (packageType) {
+        case "classic":
+          return 45;
+        case "romantic":
+          return 75;
+        case "celebration":
+          return 95;
+        case "family":
+          return 65;
+        case "corporate":
+          return 0; // custom
+        default:
+          return 45;
+      }
+    }
+
+    function updatePrice() {
+      const packageSelect = document.getElementById("package");
+      const extras = document.querySelectorAll("input[name='extras']:checked");
+      let price = basePrice(packageSelect.value);
+
+      extras.forEach((extra) => {
+        if (extra.value === "flowers") price += 15;
+        if (extra.value === "polaroid") price += 20;
+        if (extra.value === "games") price += 10;
+        if (extra.value === "cake") price += 25;
+        if (extra.value === "surprise") price += 30;
+      });
+
+      const priceSummary = document.getElementById("priceSummary");
+      if (packageSelect.value === "corporate") {
+        priceSummary.innerHTML =
+          'Estimated total: <strong>custom</strong>' +
+          '<div class="note-small">We’ll discuss group size and needs, then send a custom quote and payment link.</div>';
+      } else {
+        priceSummary.innerHTML =
+          'Estimated total: <strong>€' +
+          price +
+          "</strong>" +
+          '<div class="note-small">Final price and payment link will be confirmed via WhatsApp or email after we review your request.</div>';
+      }
+    }
+
+    function handleBooking(event) {
+      event.preventDefault();
+      alert(
+        "Thank you! Your picnic request has been captured.\n\nIn a real version, this would send your details to PerfectPicnic so Regina can contact you via WhatsApp or phone."
+      );
+      event.target.reset();
+      updatePrice();
+    }
+
+    function handleContact(event) {
+      event.preventDefault();
+      alert(
+        "Thanks for your message!\n\nIn a real version, this would send an email or notification to PerfectPicnic."
+      );
+      event.target.reset();
+    }
+
+    function selectPackage(name) {
+      const packageSelect = document.getElementById("package");
+      if (name.includes("Romantic")) packageSelect.value = "romantic";
+      else if (name.includes("Celebration")) packageSelect.value = "celebration";
+      else if (name.includes("Classic")) packageSelect.value = "classic";
+      else if (name.includes("Family")) packageSelect.value = "family";
+      else if (name.includes("Corporate")) packageSelect.value = "corporate";
+      document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+      updatePrice();
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    updatePrice();
+  </script>
+</body>
+</html>
