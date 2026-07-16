@@ -885,58 +885,61 @@
   </footer>
 
   <!-- WhatsApp widget -->
-<div class="wa-widget">
-  <div class="wa-bubble">
-    <div class="wa-bubble-icon">✆</div>
-    <span>Chat on WhatsApp</span>
-  </div>
-
-  <div class="wa-popup" id="waPopup" style="display:none;">
-    <div class="wa-popup-header">
-      <div class="wa-popup-avatar">PP</div>
-      <div>
-        <strong>PerfectPicnic Amsterdam</strong><br />
-        <span style="font-size:0.75rem;">Usually replies within a few hours</span>
-      </div>
+  <div class="wa-widget">
+    <div class="wa-bubble">
+      <div class="wa-bubble-icon">✆</div>
+      <span>Chat on WhatsApp</span>
     </div>
 
-    <p style="font-size:0.8rem;">
-      Click below to open WhatsApp and chat with us about your picnic idea.
-    </p>
+    <div class="wa-popup" id="waPopup" style="display:none;">
+      <div class="wa-popup-header">
+        <div class="wa-popup-avatar">PP</div>
+        <div>
+          <strong>PerfectPicnic Amsterdam</strong><br />
+          <span style="font-size:0.75rem;">Usually replies within a few hours</span>
+        </div>
+      </div>
 
-    <button class="wa-popup-btn">Open WhatsApp</button>
+      <p style="font-size:0.8rem;">
+        Click below to open WhatsApp and chat with us about your picnic idea.
+      </p>
+
+      <button class="wa-popup-btn">Open WhatsApp</button>
+    </div>
   </div>
-</div>
 
-<script>
-  // WhatsApp widget logic (final working version)
-  const PHONE = "79675391426"; // only digits
+  <script>
+    // WhatsApp widget logic (final)
+    const PHONE = "79675391426"; // your WhatsApp number, digits only
 
-  function toggleWaPopup() {
-    const popup = document.getElementById("waPopup");
-    popup.style.display = popup.style.display === "block" ? "none" : "block";
-  }
+    function toggleWaPopup() {
+      const popup = document.getElementById("waPopup");
+      if (!popup) return;
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
 
-  function openWhatsApp() {
-    const url =
-      "https://wa.me/" +
-      PHONE +
-      "?text=" +
-      encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
-    window.location.href = url; // guaranteed to work
-  }
+    function openWhatsApp() {
+      const url =
+        "https://wa.me/" +
+        PHONE +
+        "?text=" +
+        encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
+      window.location.href = url;
+    }
 
-  // Attach listeners AFTER DOM is ready
-  document.addEventListener("DOMContentLoaded", () => {
+    // attach listeners immediately (script is after HTML)
     const bubble = document.querySelector(".wa-bubble");
     const btn = document.querySelector(".wa-popup-btn");
 
-    bubble.style.cursor = "pointer";
-    bubble.addEventListener("click", toggleWaPopup);
+    if (bubble) {
+      bubble.style.cursor = "pointer";
+      bubble.addEventListener("click", toggleWaPopup);
+    }
 
-    btn.style.cursor = "pointer";
-    btn.addEventListener("click", openWhatsApp);
-  });
-</script>
+    if (btn) {
+      btn.style.cursor = "pointer";
+      btn.addEventListener("click", openWhatsApp);
+    }
+  </script>
 </body>
 </html>
