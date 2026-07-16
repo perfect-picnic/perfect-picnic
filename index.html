@@ -884,7 +884,7 @@
     </div>
   </footer>
 
-   <!-- WhatsApp widget -->
+  <!-- WhatsApp widget -->
 <div class="wa-widget">
   <div class="wa-bubble">
     <div class="wa-bubble-icon">✆</div>
@@ -909,12 +909,11 @@
 </div>
 
 <script>
-  // WhatsApp widget logic (fixed)
-  const PHONE = "79675391426"; // only digits, no +
+  // WhatsApp widget logic (final working version)
+  const PHONE = "79675391426"; // only digits
 
   function toggleWaPopup() {
     const popup = document.getElementById("waPopup");
-    if (!popup) return;
     popup.style.display = popup.style.display === "block" ? "none" : "block";
   }
 
@@ -924,23 +923,19 @@
       PHONE +
       "?text=" +
       encodeURIComponent("Hi! I’d like to ask about a picnic in Amsterdam.");
-    window.open(url, "_blank");
+    window.location.href = url; // guaranteed to work
   }
 
-  // привязка кликов к элементам
+  // Attach listeners AFTER DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
     const bubble = document.querySelector(".wa-bubble");
     const btn = document.querySelector(".wa-popup-btn");
 
-    if (bubble) {
-      bubble.style.cursor = "pointer";
-      bubble.addEventListener("click", toggleWaPopup);
-    }
+    bubble.style.cursor = "pointer";
+    bubble.addEventListener("click", toggleWaPopup);
 
-    if (btn) {
-      btn.style.cursor = "pointer";
-      btn.addEventListener("click", openWhatsApp);
-    }
+    btn.style.cursor = "pointer";
+    btn.addEventListener("click", openWhatsApp);
   });
 </script>
 </body>
