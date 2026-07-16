@@ -116,6 +116,8 @@
       font-size: 0.85rem;
       background: #fff;
       cursor: pointer;
+      text-decoration: none;
+      color: var(--dark);
     }
 
     main {
@@ -139,8 +141,6 @@
       color: #555;
       margin-bottom: 1.25rem;
     }
-
-    /* HERO */
 
     .hero {
       display: grid;
@@ -214,6 +214,8 @@
       font-size: 0.95rem;
       cursor: pointer;
       box-shadow: 0 8px 20px rgba(231, 111, 81, 0.35);
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn-primary:hover {
@@ -228,6 +230,8 @@
       border-radius: 999px;
       font-size: 0.9rem;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .hero-note {
@@ -287,8 +291,6 @@
       background: #2ecc71;
     }
 
-    /* CARDS & GRIDS */
-
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -345,8 +347,6 @@
     .card-cta button:hover {
       background: #21867b;
     }
-
-    /* BOOKING */
 
     .booking-grid {
       display: grid;
@@ -419,8 +419,6 @@
       margin-top: 0.25rem;
     }
 
-    /* FAQ & REVIEWS */
-
     .faq-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -447,8 +445,6 @@
       color: #555;
     }
 
-    /* CONTACT */
-
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -463,8 +459,6 @@
     .contact-info p {
       margin-bottom: 0.4rem;
     }
-
-    /* FOOTER */
 
     footer {
       border-top: 1px solid #eee;
@@ -542,15 +536,14 @@
         <a href="#booking">Book</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <button class="btn-login" type="button" onclick="alert('Login coming soon – for now, bookings are handled manually.')">
-          Login
-        </button>
+        <a href="https://wa.me/79675391426" class="btn-login">
+          WhatsApp
+        </a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-text">
         <div class="hero-tagline">
@@ -573,9 +566,9 @@
           <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
             Build your picnic
           </button>
-          <button class="btn-secondary" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">
-            Explore packages
-          </button>
+          <a href="https://wa.me/YOUR_PHONE_NUMBER" class="btn-secondary">
+            Chat on WhatsApp
+          </a>
           <span class="hero-note">Pay online after we confirm via WhatsApp or phone.</span>
         </div>
       </div>
@@ -591,7 +584,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
       <h2>About PerfectPicnic Amsterdam</h2>
       <p class="section-subtitle">
@@ -623,7 +615,6 @@
       </div>
     </section>
 
-    <!-- PACKAGES -->
     <section id="packages">
       <h2>Picnic packages</h2>
       <p class="section-subtitle">
@@ -693,7 +684,6 @@
       </div>
     </section>
 
-    <!-- ADD-ONS -->
     <section id="addons">
       <h2>Add‑ons & extras</h2>
       <p class="section-subtitle">
@@ -729,7 +719,6 @@
       </div>
     </section>
 
-    <!-- VONDELPARK -->
     <section id="vondelpark">
       <h2>Vondelpark – our first home</h2>
       <p class="section-subtitle">
@@ -760,7 +749,6 @@
       </div>
     </section>
 
-    <!-- BOOKING -->
     <section id="booking">
       <h2>Build your picnic & reserve</h2>
       <p class="section-subtitle">
@@ -770,7 +758,8 @@
       <div class="booking-grid">
         <div class="card">
           <h3>Your picnic details</h3>
-          <form id="picnicForm" onsubmit="handleBooking(event)">
+          <!-- Netlify Forms: submissions go to Netlify dashboard -->
+          <form name="booking" netlify>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your name</label>
@@ -800,7 +789,25 @@
               </div>
               <div class="form-group">
                 <label for="time">Preferred time</label>
-                <input id="time" name="time" type="time" required />
+                <select id="time" name="time" required>
+                  <option value="09:00">09:00</option>
+                  <option value="09:30">09:30</option>
+                  <option value="10:00">10:00</option>
+                  <option value="10:30">10:30</option>
+                  <option value="11:00">11:00</option>
+                  <option value="11:30">11:30</option>
+                  <option value="12:00">12:00</option>
+                  <option value="12:30">12:30</option>
+                  <option value="13:00">13:00</option>
+                  <option value="13:30">13:30</option>
+                  <option value="14:00">14:00</option>
+                  <option value="14:30">14:30</option>
+                  <option value="15:00">15:00</option>
+                  <option value="15:30">15:30</option>
+                  <option value="16:00">16:00</option>
+                  <option value="16:30">16:30</option>
+                  <option value="17:00">17:00</option>
+                </select>
               </div>
             </div>
 
@@ -879,7 +886,7 @@
             <div class="price-summary" id="priceSummary">
               Estimated total: <strong>€45</strong>
               <div class="note-small">
-                Final price and payment link will be confirmed via WhatsApp or email after we review your request.
+                Final price and payment link (iDEAL / card) will be confirmed via WhatsApp or email after we review your request.
               </div>
             </div>
 
@@ -911,7 +918,6 @@
       </div>
     </section>
 
-    <!-- FAQ & REVIEWS -->
     <section id="faq">
       <h2>FAQ & reviews</h2>
       <p class="section-subtitle">
@@ -968,7 +974,6 @@
       </div>
     </section>
 
-    <!-- ABOUT FOUNDER & CONTACT -->
     <section id="contact">
       <h2>About & contact</h2>
       <p class="section-subtitle">
@@ -1084,17 +1089,8 @@
           'Estimated total: <strong>€' +
           price +
           "</strong>" +
-          '<div class="note-small">Final price and payment link will be confirmed via WhatsApp or email after we review your request.</div>';
+          '<div class="note-small">Final price and payment link (iDEAL / card) will be confirmed via WhatsApp or email after we review your request.</div>';
       }
-    }
-
-    function handleBooking(event) {
-      event.preventDefault();
-      alert(
-        "Thank you! Your picnic request has been captured.\n\nIn a real version, this would send your details to PerfectPicnic so Regina can contact you via WhatsApp or phone."
-      );
-      event.target.reset();
-      updatePrice();
     }
 
     function handleContact(event) {
